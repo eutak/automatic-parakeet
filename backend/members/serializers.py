@@ -60,7 +60,6 @@ class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
         can_delete_user = validated_data.pop('can_delete_user', None)
 
         # Check if the current user has permission to modify this
-        print(can_delete_user, "===", instance.has_perm('members.delete_customuser'))
         if can_delete_user != instance.has_perm('members.delete_customuser'):
             self._check_delete_permission(request_user)
 
